@@ -7,18 +7,18 @@
 
 Module.register('MMM-RemoteTemperature', {
   defaults: {
-    sensorId: null,
+    sensorId: 'default-sensor-id',
     icon: 'home',
     showMore: true
   },
 
   requiresVersion: '2.1.0',
 
-  getScripts() {
+   getScripts() {
     return [
-      'moment.js'
+      'https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js'
     ];
-  },
+ },
 
   getStyles() {
     return [
@@ -111,6 +111,6 @@ Module.register('MMM-RemoteTemperature', {
   },
 
   _formatTimestamp(timestamp) {
-    return moment(timestamp).format('HH:mm');
+    return new Date(timestamp).toLocaleString();
   }
 });
